@@ -1,6 +1,6 @@
 # chat-o-safe
 
-[ ] Setup Websocket
+[X] Setup Websocket
 
 [ ] Setup Location sharing
 
