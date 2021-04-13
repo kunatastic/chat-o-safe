@@ -3,6 +3,7 @@ if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
 
+// Dependendies
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);

@@ -2,7 +2,7 @@
 
 [X] Setup Websocket
 
-[ ] Setup Location sharing
+[X] Setup Location sharing -> Passing the setFunction() to child is left
 
 [ ] Setup Chat application
 
