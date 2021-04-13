@@ -15,7 +15,13 @@ const io = socketio(server, {
 
 // Socket logic
 io.on("connection", (socket) => {
-  console.log("user connected");
+  const id = socket.handshake.query.id;
+  socket.join(id);
+  console.log("user connected", JSON.stringify(id));
+
+  socket.on("msg", (data) => {
+    console.log(data);
+  });
 });
 
 const morgan = require("morgan");
