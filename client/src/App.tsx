@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { socket } from "./socketHooks/Socket";
 import Location from "./Components/Location";
+import Chat from "./Components/Chat";
 
 interface locationType {
   longitude: number;
@@ -27,9 +28,9 @@ function App() {
     console.log(loactionData);
     setCord(loactionData);
   };
+
   useEffect(() => {
     socket.emit("msg", "HELLO THERE");
-    // console.log(cord);
   }, []);
 
   useEffect(() => {
@@ -42,7 +43,8 @@ function App() {
       <button onClick={() => setData(data + 1)}>btn</button>
       <button onClick={() => console.log(cord)}>loc</button>
       <Location storeLocation={storeLocation} />
-      {/* {user} */}
+      <Chat />
+      {console.log(process.env)}
     </>
   );
 }

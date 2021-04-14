@@ -1,15 +1,15 @@
 # chat-o-safe
 
-[x] Setup Websocket
+- [x] Setup Websocket
 
-[x] Setup Location sharing
+- [x] Setup Location sharing
 
-[ ] Setup Chat application
+- [ ] Setup Chat application
 
-[ ] Authentication
+- [ ] Authentication
 
-[ ] Public/private Routes
+- [ ] Public/private Routes
 
-[ ] Data dumping
+- [ ] Data dumping
 
-[ ] Designing
+- [ ] Designing
