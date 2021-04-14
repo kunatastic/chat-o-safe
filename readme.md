@@ -1,8 +1,8 @@
 # chat-o-safe
 
-[X] Setup Websocket
+[x] Setup Websocket
 
-[X] Setup Location sharing -> Passing the setFunction() to child is left
+[x] Setup Location sharing
 
 [ ] Setup Chat application
 
