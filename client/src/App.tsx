@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { socket } from "./socketHooks/Socket";
-import Location from "./Components/Location";
+import { Socket } from "./socketHooks/Socket";
+// import Location from "./Components/Location";
 import Chat from "./Components/Chat";
 
 interface locationType {
@@ -13,38 +13,23 @@ interface locationType {
 }
 
 function App() {
-  const [data, setData] = useState(1);
-  // const [cord, setCord] = useState<locationType[]>([]);
-  const [cord, setCord] = useState({
-    longitude: 0,
-    latitude: 0,
-    accuracy: 0,
-    altitude: 0,
-    altitudeAccuracy: 0,
-    timeStamp: 0,
-  });
-
-  const storeLocation = (loactionData: locationType) => {
-    console.log(loactionData);
-    setCord(loactionData);
+  const [cord, setCord] = useState<locationType>();
+  const storeLocation = (locationData: locationType) => {
+    console.log(locationData);
+    setCord(locationData);
   };
 
+  // Init the config
   useEffect(() => {
-    socket.emit("msg", "HELLO THERE");
+    Socket.emit("msg", "HELLO THERE");
   }, []);
-
-  useEffect(() => {
-    socket.emit("msg", "Already connected");
-  }, [data]);
 
   return (
     <>
-      Hello World
-      <button onClick={() => setData(data + 1)}>btn</button>
-      <button onClick={() => console.log(cord)}>loc</button>
-      <Location storeLocation={storeLocation} />
+      {/* Hello World */}
+      {/* <button onClick={() => console.log(cord)}>loc</button> */}
       <Chat />
-      {console.log(process.env)}
+      {/* <Location storeLocation={storeLocation} /> */}
     </>
   );
 }

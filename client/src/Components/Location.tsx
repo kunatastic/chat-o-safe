@@ -19,12 +19,6 @@ function Location({ storeLocation }: { storeLocation: PropsFunction }) {
   }
 
   function showPosition(position: any) {
-    // x.innerHTML =
-    //   "Latitude: " +
-    //   position.coords.latitude +
-    //   "<br>Longitude: " +
-    //   position.coords.longitude;
-    // console.log(position);
     var loc: locationType = {
       longitude: position.coords.longitude,
       latitude: position.coords.latitude,
@@ -33,7 +27,6 @@ function Location({ storeLocation }: { storeLocation: PropsFunction }) {
       altitudeAccuracy: position.coords.altitudeAccuracy,
       timeStamp: position.timestamp,
     };
-    // console.log(loc);
     storeLocation(loc);
   }
   return (
@@ -44,3 +37,6 @@ function Location({ storeLocation }: { storeLocation: PropsFunction }) {
 }
 
 export default Location;
+
+// TO use Location
+// <Location storeLocation={storeLocation} />;
