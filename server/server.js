@@ -3,7 +3,7 @@ if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
 
-// Dependendies
+// Dependencies
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
@@ -13,6 +13,8 @@ const io = socketio(server, {
     origin: process.env.FRONTEND_URI,
   },
 });
+const morgan = require("morgan");
+const helmet = require("helmet");
 
 // Socket logic
 io.on("connection", (socket) => {
@@ -22,11 +24,9 @@ io.on("connection", (socket) => {
 
   socket.on("msg", (data) => {
     console.log(data);
+    socket.to(id).emit("recieve-msg", data);
   });
 });
-
-const morgan = require("morgan");
-const helmet = require("helmet");
 
 // Middlewares
 app.use(helmet());
