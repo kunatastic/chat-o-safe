@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Socket } from "./socketHooks/Socket";
+import React, { useState } from "react";
+import { Socket, SocketContext } from "./context/Socket";
 // import Location from "./Components/Location";
 import Chat from "./Components/Chat";
-
-interface locationType {
-  longitude: number;
-  latitude: number;
-  accuracy: number;
-  altitude: number;
-  altitudeAccuracy: number;
-  timeStamp: number;
-}
+import { locationType } from "./InterfaceProvider";
 
 function App() {
   const [cord, setCord] = useState<locationType>();
@@ -19,17 +11,14 @@ function App() {
     setCord(locationData);
   };
 
-  // Init the config
-  useEffect(() => {
-    Socket.emit("msg", "HELLO THERE");
-  }, []);
-
   return (
     <>
-      {/* Hello World */}
-      {/* <button onClick={() => console.log(cord)}>loc</button> */}
-      <Chat />
-      {/* <Location storeLocation={storeLocation} /> */}
+      <SocketContext.Provider value={Socket}>
+        {/* Hello World */}
+        {/* <button onClick={() => console.log(cord)}>loc</button> */}
+        <Chat />
+        {/* <Location storeLocation={storeLocation} /> */}
+      </SocketContext.Provider>
     </>
   );
 }

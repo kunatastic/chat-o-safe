@@ -1,26 +1,31 @@
-import React, { useState } from "react";
-import { Socket } from "../socketHooks/Socket";
+import React, { useContext, useEffect, useState } from "react";
+import { SocketContext, id } from "../context/Socket";
+
 const Chat = () => {
-  const [msg, setMsg] = useState<string>("");
+  const Socket = useContext(SocketContext);
+
+  const [msg, setMsg] = useState<string>();
 
   const sendMsg = (event: { preventDefault: () => void }) => {
     if (msg === "") {
-      alert("em[ty");
+      alert("empty");
     }
     console.log(msg, "Submitted");
 
     const msgSent = {
       body: msg,
-      by: "9876543210", //unique number
+      by: id, //unique number
       grp: "Test", //group name
     };
+
     Socket.emit("msg", msgSent);
 
     event.preventDefault();
   };
-
-  Socket.on("recieve-msg", (data) => {
-    console.log(data);
+  useEffect(() => {
+    Socket.on("recieve-msg", (data) => {
+      console.log(data);
+    });
   });
 
   return (

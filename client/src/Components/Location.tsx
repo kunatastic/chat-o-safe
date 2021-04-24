@@ -1,11 +1,4 @@
-interface locationType {
-  longitude: number;
-  latitude: number;
-  accuracy: number;
-  altitude: number;
-  altitudeAccuracy: number;
-  timeStamp: number;
-}
+import { locationType } from "../InterfaceProvider";
 
 type PropsFunction = (coord: locationType) => void;
 
