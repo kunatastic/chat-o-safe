@@ -10,7 +10,7 @@ const server = require("http").createServer(app);
 const socketio = require("socket.io");
 const io = socketio(server, {
   cors: {
-    origin: process.env.FRONTEND_URI,
+    origin: "*", // || process.env.FRONTEND_URI,
   },
 });
 const morgan = require("morgan");
@@ -18,13 +18,13 @@ const helmet = require("helmet");
 
 // Socket logic
 io.on("connection", (socket) => {
-  const id = socket.handshake.query.id;
-  socket.join(id);
-  console.log("user connected", JSON.stringify(id));
+  // const id = socket.handshake.query.id;
+  // socket.join(id);
+  console.log("user connected", socket.handshake.query.id);
 
   socket.on("msg", (data) => {
     console.log(data);
-    socket.to(id).emit("recieve-msg", data);
+    socket.emit("recieve-msg", data);
   });
 });
 
